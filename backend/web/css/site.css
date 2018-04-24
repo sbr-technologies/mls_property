@@ -1,0 +1,278 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.content {
+  width: 100%;
+  display: inline-block;
+}
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view td {
+    white-space: nowrap;
+}
+
+
+.export-to-excel .grid-view td.wrap-word {
+    white-space: inherit;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+    min-width: 50px;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+#ajax_overlay{
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+#ajax_overlay .ajax_loader_image{
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    font-size: 4em;
+}
+
+.photo_item {
+  width: 20%;
+  height: auto;
+  float: left;
+  padding: 0 5px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.photo_item img {
+  width: 100%;
+  height: 175px;
+  border: 1px #ddd solid;
+  padding: 5px;
+  background: #fff;
+}
+.photo_item a {
+  position: absolute;
+  top: 6px;
+  right: 16px;
+}
+
+
+
+
+
+
+/*****media query start from here********/
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+.checkbox-container .form-group {
+  width: 20%;
+  float: left;
+  margin: 0;
+}
+.checkbox-container .form-group input[type="checkbox"] {
+  float: left;
+  margin: 2px 5px 0 0;
+}
+
+/**Used for Multi Select Section Start**/
+span.multiselect-native-select {
+	position: relative
+}
+span.multiselect-native-select select {
+	border: 0!important;
+	clip: rect(0 0 0 0)!important;
+	height: 1px!important;
+	margin: -1px -1px -1px -3px!important;
+	overflow: hidden!important;
+	padding: 0!important;
+	position: absolute!important;
+	width: 1px!important;
+	left: 50%;
+	top: 30px
+}
+.multiselect-container {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0
+}
+.multiselect-container .input-group {
+	margin: 5px
+}
+.multiselect-container>li {
+	padding: 0
+}
+.multiselect-container>li>a.multiselect-all label {
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group label {
+	margin: 0;
+	padding: 3px 20px 3px 20px;
+	height: 100%;
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group-clickable label {
+	cursor: pointer
+}
+.multiselect-container>li>a {
+	padding: 0
+}
+.multiselect-container>li>a>label {
+	margin: 0;
+	height: 100%;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 3px 0 3px 30px
+}
+.multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
+	margin: 0
+}
+.multiselect-container>li>a>label>input[type=checkbox] {
+	margin-bottom: 5px
+}
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px
+}
+.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+	padding: 3px 20px 3px 40px
+}
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+	margin-left: -20px;
+	margin-right: 0
+}
+
+.multiselect.dropdown-toggle { text-align:left; padding:10px; background:#fff; }
+.multiselect.dropdown-toggle .caret { /*margin-top:-11px; float:right;*/ }
+.multiselect-container.dropdown-menu { width:92%; margin:0 4%; top:70px; }
+/**Used for Multi Select Section End**/
+.span-error { position: absolute; left: 117px; color: #f00; }
+.span-error1 { left: 160px; }
+.error {color:#f00;}
+.form-group.required label.control-label { position:relative; }
+.form-group.required label.control-label:after { content:"*"; position:absolute; top:0; display:inline-block; color:#f00; margin-left:2px; font-size:14px; }
+.select2-container .select2-selection--single .select2-selection__rendered{
+    margin-top: 0;
+}
+
+.local_govt_area_or {
+	position:absolute;
+	top:32px;
+	right:-9px;
+	font-size:14px;	
+}
+.contact_accordion_sec .box { margin-bottom: 0; border-radius:0;}
+.contact_accordion_sec .box.box-solid.box-danger { border: none !important; }
+.contact_accordion_sec .box .box-title a { font-size:15px; }
+.contact_accordion_sec .box .box-title a:hover, .contact_accordion_sec .box .box-title a:focus { background: none; }
+.search_agent{display: none;}
+
+.nav-tabs > li > a.inactive {cursor: default; pointer-events: none; opacity: 0.7}
+.multidate-datepicker { width: 100%; margin-bottom: 20px; }
+.multidate-datepicker .input-group.date { width: 100%; }
+.multidate-datepicker .input-group.date .input-group-addon { width: 5%; }

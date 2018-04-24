@@ -1,0 +1,126 @@
+* { margin:0px; padding:0px; outline:none;
+-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+img { margin:0px; padding:0px; outline:none; max-width:100%; }
+body { margin:0; font-size: 13px; color: #333; }
+a { color: #00a3ab; text-decoration:none; outline:none; 
+	-webkit-transition: all 0.4s linear;
+	-moz-transition: all 0.4s linear;
+	-o-transition: all 0.4s linear;
+	transition: all 0.4s linear;
+}
+img { margin:0px; padding:0px; outline:none; border:none; max-width:100%; max-height:100%; }
+p { padding: 0; line-height:24px; margin-bottom:30px; }
+li {  }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; padding: 0; margin:0; color:#405e6f; }
+h1 { font-size:36px; }
+h2 { font-size:30px; }
+h3 { font-size:24px; }
+h4 { font-size:18px; }
+h5 { font-size:16px; }
+h6 { font-size:14px; }
+
+table {border-collapse: collapse;}
+/* Start Content Styles --------------------------------------------------*/
+/*.main-wrapper { width:900px; height:auto; margin:auto; }*/
+.pdf-top-part { text-align:center; 
+               /*margin:30px 0;*/ 
+}
+.pdf-top-part h1 { font-size:24px; color:#405e6f; font-weight:600; margin-bottom: 30px; }
+/*.pdf-top-part h2 { font-size:24px; color:#405e6f; font-weight:600; line-height: 48px; margin: 20px 0 40px; }*/
+.pdf-top-part h2 { font-size:18px; color:#405e6f; font-weight:bold; line-height: 48px; font-family:"Times New Roman", Times, serif; margin: 20px 0 40px; }
+.top-address-part { width:60%; display:inline-block; margin:40px auto 20px; }
+.top-address-part .top-address-part-left { text-align:left;/* width:45%; float:left;*/ color:#405e6f; font-size:10px; font-weight:normal; font-family:Arial, Helvetica, sans-serif; }
+.top-address-part .top-address-part-right { text-align:left; /*width:55%; float:left;*/ color:#405e6f; word-break: break-all;  font-size:10px; font-weight:normal; font-family:Arial, Helvetica, sans-serif;}
+.pdf-top-part ul { margin:0 0 20px 0; padding:0 100px; }
+.pdf-top-part ul li { font-size:18px; list-style:disc; color:#333; line-height:24px; padding:5px 0; text-align:left; width:100%; }
+.pdf-top-part .feature-image {max-width:200px; margin:0 auto;}
+
+.pdf-middle-part { width:100%; display:inline-block; text-align:center; margin:30px 0 0; }
+.pdf-middle-part h2 { font-weight:600; font-size:24px; margin-bottom:40px; }
+.pdf-middle-left { width:38%; float:left; margin-left: 50px; text-align: left;}
+.pdf-middle-left .thumb-image-left{margin: 0 0 0 8px}
+.pdf-middle-right { width:52%; float:right; margin-right: 1%; }
+.pdf-middle-left h3 { text-align:left; margin: 5px 5px 0; }
+.pdf-middle-left table { margin:20px 0 20px; }
+.pdf-middle-left table tr td { padding:3px 5px; text-align:left; }
+.pdf-middle-right h3 { text-align:left; }
+.right-table-list th { background:#405e6f; color:#fff; text-align:left;}
+
+
+table.padding-left-5 td, table.padding-left-5 th{padding-left: 5px;}
+
+.center-table-list{
+  /*width: 80%;*/
+}
+
+.pdf-bottom-part { width:100%; display:inline-block; text-align:center; margin:30px 0; }
+.pdf-bottom-part h3 { font-weight:600; }
+.property-photos_holder{
+	margin-left:0px;
+}
+.property-photos_holder .property-photos{
+	display:table;
+	width:100%;
+	margin-bottom:30px;
+	list-style:none;
+}
+.property-photos_holder .property-photos li{
+	display:table-cell;
+	width:50%;
+	text-align:center;
+	padding:30px;
+}
+.investment_summary_holder tr td{
+	border-right:1px solid #405e6f;
+}
+.investment_summary_holder tr td, .pdf-middle-left table.investment_summary_holder tr td{
+	padding:5px 10px;
+	text-align:right;
+}
+.investment_summary_holder tr td:nth-child(1), .pdf-middle-left table.investment_summary_holder tr td:nth-child(1){
+	text-align:left;
+}
+
+.fixed_width_col60 tr td:nth-child(1){
+	width: 60%;
+}
+.pdf-top-part .topholder .topholdertitle h1, .pdf-top-part .topholder .topholdertitle h2, .pdf-top-part .topholder .topholdertitle div{
+font-size:24px; padding-top:30px; text-align:center; font-family:"Times New Roman", Times, serif; color:#405e6f; font-weight:600; margin: 0;
+}
+.headertitlemain h1, .headertitlemain h2, .headertitlemain div, .headertitlemain{
+	font-family:"Times New Roman", Times, serif; color:#405e6f;
+}
+/*.pdf-bottom-part .property-photos { list-style:none; margin:40px auto 0; width:100%; }
+
+.pdf-bottom-part .property-photos li { list-style:none; width:48%; box-sizing: border-box; float:left; margin:0 0 25px 0; text-align: center; overflow: hidden; }
+.pdf-bottom-part .property-photos li img {  }
+*/.top-footer-sec { width: 100%; display: inline-block; padding: 5px 0 15px; text-align: center; font-size: 10px; font-weight: bold; color: #3f5c6e;}
+.footer-section { padding: 10px 100px 10px 10px; text-align: center; color: #fff; font-size: 12px; text-decoration: none; line-height: 22px;}
+
+.pdf-bottom-part { width:100%; display:inline-block; text-align:center; margin:30px 0; }
+    .pdf-bottom-part h3 { font-weight:600; }
+    .pdf-bottom-part .property-photos { list-style:none; margin:40px auto 0; padding:0 50px;  }
+    .pdf-bottom-part .property-photos li { list-style:none; width:44%; float:left; margin:0; padding:3%; }
+    .pdf-bottom-part .property-photos li span { font-size:18px; color:#000; text-transform:uppercase; margin-bottom:10px; display:block; }
+    .pdf-bottom-part .property-photos li img { width:100%; border:1px #ddd solid; padding:6px; background:#fff; }
+    .pdf-bottom-part .property-photos1 li { list-style:none; width:32%; float:left; margin:0; padding:0.5%; }
+
+    
+.pdf-con-part { width:100%; display:inline-block; text-align:center; margin:10px 0; padding:0 10px; }
+.pdf-con-part .table-icon-listing { margin:15px 0 40px; border:1px #eee solid; text-align:center; background:#fff; padding:15px; box-shadow:0 0 5px #ddd; }
+.pdf-con-part .table-icon-listing td { width:16.5%; font-size:13px; padding: 0 10px;}
+.pdf-con-part .table-icon-listing strong { display:block; }
+
+.page-break { display: block; page-break-before: always; }
+
+.table-bordered td, .table-bordered th{
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered td{
+    padding:5px 10px;
+}

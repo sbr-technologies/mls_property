@@ -1,0 +1,107 @@
+.pmenu.navbar.navbar-default {
+	border: none;
+	border-radius: 0;
+	background: none;
+	margin: 0;
+}
+.pmenu .navbar-brand {
+	height: auto;
+}
+.pmenu .nav {
+	
+}
+.pmenu.navbar-default .navbar-nav > li > a{
+	padding:45px 14px;
+	border-bottom:3px solid #fff;
+	color: #363636;
+	
+	font-weight:bold;
+	font-size:15px;
+}
+.pmenu.navbar-default .navbar-nav > li:hover > a, .pmenu.navbar-default .navbar-nav > li.active > a {
+	border-color:#ff3030;
+	color:#ff3030;
+}
+.navbar-nav > li > .dropdown-menu {
+	padding: 30px 0;
+	border:none;
+	border-top:1px solid #ddd;
+}
+.mega-dropdown-menu ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+@media screen and (min-width:767px) {
+.navbar-nav > li:hover > .dropdown-menu {
+	display: block;
+	left: 0;
+	border-radius: 0;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+	background: none;
+}
+}
+/*========================*/
+
+.pmenu .mega-dropdown {
+	position: static !important;
+	display:inline-block;
+}
+.pmenu .mega-dropdown ul li{
+	list-style:none;
+}
+.mega-dropdown-menu {
+	padding: 20px 0px;
+	width: 100%;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.mega-dropdown-menu > li > ul {
+	padding: 0;
+	margin: 0;
+}
+.mega-dropdown-menu > li > ul > li {
+	list-style: none;
+}
+.mega-dropdown-menu > li > ul > li > a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.428571429;
+	color: #999;
+	white-space: normal;
+}
+.mega-dropdown-menu > li ul > li > a:hover, .mega-dropdown-menu > li ul > li > a:focus {
+	text-decoration: none;
+	color: #444;
+	background-color: #f5f5f5;
+}
+.mega-dropdown-menu .dropdown-header {
+	color: #333;
+	font-size: 18px;
+	padding:0 0 10px;
+	font-weight:600;
+}
+.mega-dropdown-menu form {
+	margin: 3px 20px;
+}
+.mega-dropdown-menu .form-group {
+	margin-bottom: 3px;
+}
+.pmenu .mega-dropdown ul li a{
+	padding:6px 0;
+	display:block;
+	color:#666;
+}
+.pmenu .mega-dropdown ul li a:hover{
+	color:#b21117;
+}
+.bannerbutton{
+	padding:10px 0 5px;
+}
+.bannerbutton .btn {
+    display: inline-block !important;
+    padding: 5px 10px !important;
+}

@@ -1,0 +1,80 @@
+/* Start Media Styles ---------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+	.add-property-upload-sec label { float:none; }
+	.add-property-upload-sec .fileinput { float:none; margin:0; }
+}
+
+@media (min-width: 980px) and (max-width: 1024px) {
+	.navbar-custom-menu > .navbar-nav > li > a { padding:0 15px; }
+	.photo-upload-sec { margin-bottom:150px; }
+	.manage-profile-image{ bottom:-160px; }
+	.manage-profile-tab-bar ul li a { /*width:150px;*/ }
+	.new-property-form-sec .manage-profile-tab-bar ul li a { width:210px; margin-bottom:12px; }
+	.multiselect.dropdown-toggle .caret { margin-top:6px; }
+	
+}
+
+@media (min-width: 768px) and (max-width: 800px) {
+	.navbar-custom-menu > .navbar-nav > li.user-menu span { display:none; }
+	.navbar-nav > .user-menu .user-image { margin-left:0; }
+	.navbar-custom-menu > .navbar-nav > li > a { padding:0 10px; }
+	.top-search { width:45%; }
+	.manage-profile-datepicker { position:inherit; right:0; bottom:10px; width:100%; }
+	.manage-profile-sec { margin-top:0; }
+	.manage-profile-image { margin:10px auto 0; text-align:center; position:inherit; left:0; bottom:0; }
+	.manage-profile-image .fileinput .btn-file { position:inherit; margin-top:-220px; }
+	.photo-upload-sec { margin-bottom:0; }
+	.manage-profile-form-sec { margin:0; }
+	.manage-profile-tab-bar ul li { width:49%; margin:0 2px 12px 0; }
+	.manage-profile-tab-bar ul li a { width:100%; }
+	.form-sec { width:100%; }
+	.form-sec .form-group .col-sm-4,
+	.form-sec .form-sec-box .form-group.col-sm-5,
+	.form-sec .form-sec-box .col-sm-10 { width:100%; }
+	
+	
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+	.main-header { max-height:190px; }
+	.main-sidebar, .left-side { padding-top:185px; }
+	.top-search { display:inline-block; width:100%; padding:1px 2px; }
+	.top-search form { padding:0; margin:0; }
+	.main-header .navbar-custom-menu { position:absolute; right:0; top:0; }
+	.navbar-nav > .user-menu .user-image { margin:0; }
+	.navbar-custom-menu > .navbar-nav > li > a { padding:0 12px; font-size:16px; }
+	.main-header .sidebar-toggle { height:54px; line-height:54px; }
+	.navbar-custom-menu > .navbar-nav > li > a { height:54px; line-height:54px; }
+	.navbar-custom-menu > .navbar-nav > li > a i { line-height:72px; }
+	.content-header { padding:10px; }
+	.content-header > .breadcrumb { margin:10px 0; }
+	.manage-profile-datepicker { position:inherit; bottom:0; right:0; width:100%; }
+	.content { padding:10px; }
+	.manage-profile-sec { margin-top:0px; }
+	.manage-profile-image { margin:10px auto 0; text-align:center; position:inherit; left:0; bottom:0; }
+	.manage-profile-image .fileinput .btn-file { position:inherit; margin-top:-221px; }
+	.photo-upload-sec { margin-bottom:0; }
+	.manage-profile-form-sec { margin:0 0 30px; }
+	.manage-profile-tab-bar ul li { width:100%; margin:0 0 10px; }
+	.manage-profile-tab-bar ul li a { width:100%; }
+	.form-sec-box { padding:15px; }
+	.manage-profile-form-sec .fileinput .btn-file { position:inherit; width:100%; }
+	.footer-sec { float:left; padding:20px 0; }
+	.footer-sec .footer-left { text-align:center; float:none; width:100%; }
+	.footer-sec .footer-left li { padding:2px 8px; }
+	.footer-sec .footer-right { float:none; text-align:center; width:100%; margin-top:6px; }
+	.add-property-upload-sec label { float:none; }
+	.add-property-upload-sec .fileinput { float:none; margin:0; }
+	
+}
+
+@media (min-width: 320px) and (max-width: 360px) {
+}
+
+
+
+
+
+
+
+

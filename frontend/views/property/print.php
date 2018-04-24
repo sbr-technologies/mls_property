@@ -1,0 +1,642 @@
+<?php
+
+use yii\helpers\Html;
+use common\models\PhotoGallery;
+use common\models\Property;
+use common\models\PropertyContact;
+use yii\helpers\Url;
+
+
+$this->title = $property->formattedAddress;
+$today = date('Y-m-d');
+$radius = 5; //in Km
+$areaWhere = '';
+if($property->area){
+    $areaWhere = " AND area='".$property->area."'";
+}
+$typesWhere = '';
+
+$commonWhere = "WHERE property_category_id='".$property->property_category_id."' AND town='".$property->town."' AND state='".$property->state."' ". $typesWhere.$areaWhere;
+
+$activeWhere = "AND status= '".Property::STATUS_ACTIVE."' and market_status='".Property::MARKET_ACTIVE."' AND expired_date>='".$today."'";
+
+$soldWhere = "AND status= '".Property::STATUS_ACTIVE."' and market_status='".Property::MARKET_SOLD."' AND expired_date>='".$today."'";
+
+$activeSql = "SELECT *, ( 6371 * acos( cos( radians(".$property->lat.") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$property->lng.") ) + sin( radians(".$property->lat.") ) * sin( radians( lat ) ) ) ) AS distance FROM mls_property $commonWhere AND LAT IS NOT NULL AND LNG IS NOT NULL $activeWhere HAVING distance < $radius order by distance asc LIMIT 0 , 100";
+$soldSql = "SELECT *, ( 6371 * acos( cos( radians(".$property->lat.") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$property->lng.") ) + sin( radians(".$property->lat.") ) * sin( radians( lat ) ) ) ) AS distance FROM mls_property $commonWhere AND lat IS NOT NULL AND lng IS NOT NULL $soldWhere HAVING distance < $radius order by distance asc LIMIT 0 , 100";
+if($property->lat && $property->lng){
+    $activeProperty     =   Property::findBySql($activeSql)->all();
+    $soldProperty       =   Property::findBySql($soldSql)->all();
+}
+$propertyContactArr =   PropertyContact::find()->where(['property_id' => $property->id])->all();
+//yii\helpers\VarDumper::dump($property->id,12,1); exit;
+
+$monthWiseProperty = [];
+if($property->lat && $property->lng){
+    $addressList= Yii::$app->db->createCommand("SELECT count(id) as totalProperty,AVG(price) as avragePrice,MAX(price) as maxPrice,MIN(price) as minPrice, "
+            . "MONTH(FROM_UNIXTIME(created_at)) AS selectMonth,street_address,area,town,state,country,zip_code, lat, lng, "
+            . "( 6371 * acos( cos( radians(".$property->lat.") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$property->lng.") ) + sin( radians(".$property->lat.") ) * sin( radians( lat ) ) ) ) AS distance "
+            . "FROM mls_property $commonWhere $activeWhere GROUP BY selectMonth HAVING distance < $radius order by distance asc LIMIT 0 , 100")->queryAll();
+//                    yii\helpers\VarDumper::dump($addressList, 11,1);die();
+    if(!empty($addressList)){
+        foreach($addressList as $address){
+            $monthWiseProperty[$address['selectMonth']] =   $address;
+        } 
+    }
+}
+$monthWiseSoldProperty = [];
+if($property->lat && $property->lng){
+    $addressSoldList= Yii::$app->db->createCommand("SELECT count(id) as totalProperty,AVG(price) as avragePrice,MAX(price) as maxPrice,MIN(price) as minPrice, "
+            . "MONTH(FROM_UNIXTIME(created_at)) AS selectMonth,street_address,area,town,state,country,zip_code, lat, lng, "
+            . "( 6371 * acos( cos( radians(".$property->lat.") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$property->lng.") ) + sin( radians(".$property->lat.") ) * sin( radians( lat ) ) ) ) AS distance "
+            . "FROM mls_property $commonWhere $soldWhere GROUP BY selectMonth HAVING distance < $radius order by distance asc LIMIT 0 , 100")->queryAll();
+//                    yii\helpers\VarDumper::dump($addressList, 11,1);die();
+    if(!empty($addressSoldList)){
+        foreach($addressSoldList as $address){
+            $monthWiseSoldProperty[$address['selectMonth']] =   $address;
+        } 
+    }
+}
+?>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- Meta Tag
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Your description">
+        <meta name="keywords" content="Your keywords">
+    </head>
+    <body style="font-family: Arial, Helvetica, sans-serif;">
+        <!-- Start Content Section ==================================================-->
+        <div class="main-wrapper">
+            <div class="pdf-top-part">
+                <div class="topholder">
+                    <div class="topholdertitle" style="font-size:20px; text-align:center; font-family:Times New Roman, Times, serif; color:#405e6f; font-weight:600; margin-top: 25px;">
+                         <h2><?= $property->formattedAddress ?></h2>
+                    </div>
+                    <div class="header_bottom" style="position:relative; height:530px; padding-top:50px;">
+                        <div class="feature-image">
+                            <!--<img style="'.($is_portrait == true? 'max-height:350px':'max-width:500px;'). '" src="'.image_style_url('large', $node->field_feature_image['und'][0]['uri']).'&t='.time().'">-->
+                            <?php
+                            $photos = $property->photos;
+                            $active = '';
+                            if (!empty($photos)) {
+                                if (isset($photos) && $photos != '') {
+                                    $alias = $photos[0]->getImageUrl(PhotoGallery::LARGE);
+                                    echo Html::img($alias, ['class' => 'pdf-main-img', 'height' => '420']);
+                                }
+                            }
+                            ?>
+                        </div>
+                        <h2>
+                            <?= $property->formattedAddress ?>
+                            <br>
+                            <?= Yii::$app->formatter->asCurrency($property->price) ?>
+                        </h2>
+                    </div>
+                    <div class="top-address-part">
+                        <?php
+                            $listedBy = $property->listedBy;
+                        ?>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <div class="top-address-part-left"><?= $listedBy->commonName?><br>
+                                        <?= $listedBy->formattedAddress?>
+                                        <br>
+                                        <?= $listedBy->country?>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="top-address-part-right">
+                                        <span>Mobile: <?= $listedBy->getMobile1();?></span><br>
+                                        <span>Office: <?= $listedBy->getOffice1();?></span><br>
+                                        <span>Fax: <?= $listedBy->getFax1();?></span><br>
+                                        <span><a href="<?= $listedBy->email?>"><?= $listedBy->email?></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </div>
+                <div class="page-break"></div>
+                <div class="header" style="margin-bottom:40px">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                        <tr>
+                            <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:"Times New Roman", Times, serif;">Property Details</div></td>
+                        </tr>
+                    </table>            
+                </div>
+                
+                    
+                
+                
+            </div>
+            
+            
+            <div class="pdf-con-part">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-icon-listing">
+                    <tr>
+                        <td><img src="<?= Url::home(true) ?>/public_main/images/pdf-icon1.png" alt=""></td>
+                        <td><img src="<?= Url::home(true) ?>/public_main/images/pdf-icon2.png" alt=""></td>
+                        <td><img src="<?= Url::home(true) ?>/public_main/images/pdf-icon3.png" alt=""></td>
+                        <td><img src="<?= Url::home(true) ?>/public_main/images/pdf-icon4.png" alt=""></td>
+                        <td><img src="<?= Url::home(true) ?>/public_main/images/pdf-icon5.png" alt=""></td>
+                        <td><img src="<?= Url::home(true) ?>/public_main/images/pdf-icon6.png" alt=""></td>
+                    </tr>
+                    <tr>
+                        <td>Category <strong><?= $property->propertyCategory->title ?></strong></td>
+                        <td>Status <strong><?= $property->market_status ?></strong></td>
+                        <td>Price/Sq Ft <strong>₦<?= $property->pricePerUnit ?></strong></td>
+                        <td>On naijahouses.com <strong><?= $property->daysListed ?> days</strong></td>
+                        <td>Type <strong><?= $property->firstPropertyType ?></strong></td>
+                        <td>Built <strong><?= $property->year_built ?></strong></td>
+                    </tr>
+
+                </table>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
+                    <tr><td><?= $property->description ?></td></tr>
+                </table>
+                <!--                        <h2>Property Features</h2>
+                                        <h3>General Features:</h3>-->
+                <!--                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-listing">
+                                            <tr>
+                                                <td>Alarm</td>
+                                                <td>Balcony</td>
+                                                <td>Air Condition</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Built in Braai</td>
+                                                <td>Balcony Deck</td>
+                                                <td>Built In Cupboards</td>
+                                            </tr>
+                
+                                        </table>-->
+                <?php
+                $lat = $property->lat;
+                $lng = $property->lng;
+                $formatted_address = $property->formattedGmapAddress;
+                $map_url = 'https://maps.googleapis.com/maps/api/staticmap?center=' . $formatted_address . '&zoom=12&size=600x300&maptype=roadmap&markers=color:red%7C' . $lat . ',' . $lng;
+                //\yii\helpers\VarDumper::dump($map_url); exit;
+                echo $map_image = '<img src="' . $map_url . '" height="450" width="700" />';
+                ?>
+            </div>
+            
+            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:20px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:"Times New Roman", Times, serif;">Property Summary</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="pdf-middle-part">
+                <div class="pdf-middle-left">
+                    <div class="thumb-image-left">
+                        <!--<img src="'.image_style_url('medium', $node->field_feature_image['und'][0]['uri']).'&t='.time().'" style="'.($is_portrait == true? 'max-height:200px':'max-width:200px;'). '" alt="">-->
+                        <?php
+                        $photos = $property->photos;
+                        $active = '';
+                        if (!empty($photos)) {
+                            if (isset($photos) && $photos != '') {
+                                $alias = $photos[0]->getImageUrl(PhotoGallery::MEDIUM);
+                                echo Html::img($alias, ['class' => 'pdf-main-img']);
+                            }
+                        }
+                        ?>
+                    </div>
+                    <table width="100%" class="investment_summary_holder fixed_width_col60" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>Property ID:</td>
+                            <td><?= $property->reference_id?></td>
+                        </tr>
+           <tr>
+                            <td>Category:</td>
+                            <td><?= $property->propertyCategory->title?></td>
+                        </tr>
+                                    
+      <tr>
+                            <td>Market Status:</td>
+                            <td><?= $property->market_status ?></td>
+                        </tr>                 <tr>
+                            <td>Listed Price:</td>
+                            <td><?= $property->price?></td>
+                        </tr>
+                        <?php if($property->sold_price){?>
+                        <tr>
+                            <td>Sold Price:</td>
+                            <td><?= $property->sold_price?></td>
+                        </tr>
+                        <?php }?>
+                        <tr>
+                            <td>Year Built:</td>
+                            <td><?= $property->year_built?></td>
+                        </tr>
+                        <tr>
+                            <td>Property Size:</td>
+                            <td><?= $property->house_size?>Sq m</td>
+                        </tr>
+                        <tr>
+                            <td>Building Size:</td>
+                            <td><?= $property->building_size?>Sq m</td>
+                        </tr>
+                        <tr>
+                            <td>Lot Size:</td>
+                            <td><?= $property->lot_size?>Sq m</td>
+                        </tr>
+                        <tr>
+                            <td>Price per Sq. Meter:</td>
+                            <td><?= $property->pricePerUnit?></td>
+                        </tr>
+                        <tr>
+                            <td>Bedroom:</td>
+                            <td><?= $property->no_of_room?></td>
+                        </tr>
+                        <tr>
+                            <td>Bathroom:</td>
+                            <td><?= $property->no_of_bathroom?></td>
+                        </tr>
+                        <tr>
+                            <td><?=$property->getAttributeLabel('no_of_toilet')?>:</td>
+                            <td><?= $property->no_of_toilet?></td>
+                        </tr>
+                        <tr>
+                            <td>Garage:</td>
+                            <td><?= $property->no_of_garage?></td>
+                        </tr>
+                        <tr>
+                            <td><?=$property->getAttributeLabel('service_fee')?>:</td>
+                            <td><?= $property->service_fee?></td>
+                        </tr>
+                        <tr>
+                            <td><?=$property->getAttributeLabel('other_fee')?>:</td>
+                            <td><?= $property->other_fee?></td>
+                        </tr>
+                        <tr>
+                            <td><?=$property->getAttributeLabel('tax_for')?>:</td>
+                            <td><?= $property->tax?></td>
+                        </tr>
+                        <tr>
+                            <td><?=$property->getAttributeLabel('insurance_for')?>:</td>
+                            <td><?= $property->insurance?></td>
+                        </tr>
+                        <tr>
+                            <td><?=$property->getAttributeLabel('hoa_for')?>:</td>
+                            <td><?= $property->hoa_fees?></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="pdf-middle-right">
+                    <h5>Features</h5>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-listing table-bordered">
+                        <?php 
+                            $genralFeature = $property->propertyGeneralFeature;
+                            if(!empty($genralFeature)){
+                                $i = 0;
+                            echo '<tr style="margin-top:10px">';
+                            foreach ($genralFeature as $general){
+                                $i++;
+                                echo '<td>'. $general->generalFeatureMasters->name. '</td>';
+                                if($i == 12){
+                                    break;
+                                }
+                                if($i%3 == 0){
+                                    echo '</tr><tr>';
+                                }
+                            }
+                            echo '</tr>';
+                            }else{
+                            echo '<tr><td>No Records Found</td></tr>';
+                            }?>
+                    </table>
+                    <?php
+                        if(isset($property->propertyFeatures) && !empty($property->propertyFeatures)){
+                        ?>
+                        <div class="features-listing-sec">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <?php
+                                $featureRowCnt = 0;
+                                foreach (array_chunk($property->propertyFeatures, 2, true) as $propertyFeatures) {
+                                    if($featureRowCnt > 5){
+                                        break;
+                                    }
+                                echo '<tr>';
+                                foreach($propertyFeatures as $feature){
+                                $featureRowCnt++;
+                                $photos = $feature->photos;
+                                $itemListArr   =   $feature->featureItems;
+                                if(count($itemListArr) > 0){
+                                ?>
+                                <td style="padding-top: 20px;">
+                                    <h6><?= $feature->featureMaster->name  ?></h6>
+                                        <div class="item <?= $active ?>">
+                                        <?php
+                                                                       // \yii\helpers\VarDumper::dump(count($photos));
+                                        if(count($photos) == 0){
+                                            echo Html::img(Yii::getAlias('@uploadsUrl/banner_image/no_image_avaliable.png'),['class' => 'featuresimg_0']);
+                                        }else{
+                                            foreach ($photos as $key => $photo) {
+                                                if($key == 0){
+                                                    if(isset($photo) && $photo != ''){
+                                                        $alias = $photo->getImageUrl(PhotoGallery::THUMBNAIL);
+                                                        echo Html::img($alias);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        </div>
+                                    <ul>
+                                        <?php $itemCnt = 0;
+                                        foreach($itemListArr as $key => $item){
+                                            if($itemCnt == 4){
+                                                break;
+                                            }
+                                        ?>  
+                                            <li><?= $item->name ?><?= $item->size ? " - ".$item->size : "" ?></li>
+                                            <?php $itemCnt++;
+                                            if(!empty($item->description)){$itemCnt++
+                                                ?>
+                                            <li title="<?= $item->description?>"><?= substr($item->description, 0, 20) ?></li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </td>  <!-- End of features-listing -->
+                                <?php
+                                    } 
+                                }  // End of outer foreach
+                                echo '</tr>'; // <!-- End of features-listing-group -->'
+                                }
+                                ?>
+                        <?php 
+                        }
+                        ?>
+                    </table>
+                </div>
+            </div>
+            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:40px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:Times New Roman, Times, serif;">Active Properties Nearby</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="pdf-bottom-part">
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" class="right-table-list padding-left-5 table-bordered">
+                    <tr>
+                        <th>Address</th>
+                        <th>No. of Bedroom</th>
+                        <th>No. of Bathroom</th>
+                        <th>Price</th>
+                        <th>Lot Size</th>
+                        <th>Distance</th>
+                    </tr>
+                    <tr>
+                        <td><?= 'This Home : ' . $property->formattedAddress?></td>
+                        <td><?= $property->no_of_room?></td>
+                        <td><?= $property->no_of_bathroom?></td>
+                        <td><?= $property->price?></td>
+                        <td><?= $property->lot_size?></td>
+                        <td>0</td>
+                    </tr>
+                    <?php
+                    if (!empty($activeProperty)) {
+                        foreach ($activeProperty as $active) {?>
+                    <tr>
+                        <td><?= $active->formattedAddress?></td>
+                        <td><?= $active->no_of_room?></td>
+                        <td><?= $active->no_of_bathroom?></td>
+                        <td><?= $active->price?></td>
+                        <td><?= $active->lot_size?></td>
+                        <td><?= round($active->distance, 1) . 'Km'?></td>
+                    </tr>
+                    <?php }
+                    }
+                    ?>
+                </table>
+            </div>
+            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:40px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:Times New Roman, Times, serif;">Sold Properties Nearby</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="pdf-bottom-part">
+            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" class="right-table-list padding-left-5 table-bordered">
+                <tr>
+                    <th>Address</th>
+                    <th>No. of Bedroom</th>
+                    <th>No. of Bathroom</th>
+                    <th>Price</th>
+                    <th>Lot Size</th>
+                    <th>Distance</th>
+                </tr>
+<!--                    <tr>
+                    <td><?= 'This Home : ' . $property->formattedAddress?></td>
+                    <td><?= $property->no_of_room?></td>
+                    <td><?= $property->no_of_bathroom?></td>
+                    <td><?= $property->price?></td>
+                    <td><?= $property->lot_size?></td>
+                    <td>0</td>-->
+                </tr>
+                <?php
+                if (!empty($soldProperty)) {
+                    foreach ($soldProperty as $sold) {?>
+                <tr>
+                    <td><?= $sold->formattedAddress?></td>
+                    <td><?= $sold->no_of_room?></td>
+                    <td><?= $sold->no_of_bathroom?></td>
+                    <td><?= $sold->price?></td>
+                    <td><?= $sold->lot_size?></td>
+                    <td><?= round($sold->distance, 1) . 'Km'?></td>
+                </tr>
+                <?php }
+                }else{
+                    echo '<tr><td colspan="6">No Records Found</td></tr>';
+                }
+                ?>
+            </table>
+            </div>
+            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:40px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:Times New Roman, Times, serif;">Average Prices Nearby Active</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="pdf-bottom-part">
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" class="right-table-list padding-left-5 table-bordered">
+                    <tr>
+                        <th width="20%">Month</th>
+                        <th width="20%">Average Price</th>
+                        <th width="20%">Maximum Price</th>
+                        <th width="20%">Minimum Price</th>
+                        <th width="20%">Total No of Properties</th>
+                    </tr>
+                    <?php
+                    if (!empty($soldProperty)) {
+                    foreach ($addressList as $monthName => $monthVal) {
+                    $monthNum = sprintf("%02s", $monthVal["selectMonth"]);
+                    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));    
+                    ?>
+                    <tr>
+                        <td><?= $monthName ?></td>
+                        <td><?= Yii::$app->formatter->asCurrency($monthVal['avragePrice']) ?></td>
+                        <td><?= Yii::$app->formatter->asCurrency($monthVal['maxPrice']) ?></td>
+                        <td><?= Yii::$app->formatter->asCurrency($monthVal['minPrice']) ?></td>
+                        <td><?= $monthVal['totalProperty'] ?></td>
+
+                    </tr>
+                    <?php }
+                    }else{
+                        echo '<tr><td colspan="5">No Records Found</td></tr>';
+                    }
+                    ?>
+                </table>
+            </div>
+            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:40px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:Times New Roman, Times, serif;">Average Prices Nearby Sold</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="pdf-bottom-part">
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" class="right-table-list padding-left-5 table-bordered">
+                    <tr>
+                        <th width="20%">Month</th>
+                        <th width="20%">Average Price</th>
+                        <th width="20%">Maximum Price</th>
+                        <th width="20%">Minimum Price</th>
+                        <th width="20%">Total No of Properties</th>
+                    </tr>
+                    </tr>
+                    <?php
+                    if (!empty($soldProperty)) {
+                    foreach ($addressSoldList as $monthName => $monthVal) {
+                    $monthNum = sprintf("%02s", $monthVal["selectMonth"]);
+                    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));    
+                    ?>
+                    <tr>
+                        <td><?= $monthName ?></td>
+                        <td><?= Yii::$app->formatter->asCurrency($monthVal['avragePrice']) ?></td>
+                        <td><?= Yii::$app->formatter->asCurrency($monthVal['maxPrice']) ?></td>
+                        <td><?= Yii::$app->formatter->asCurrency($monthVal['minPrice']) ?></td>
+                        <td><?= $monthVal['totalProperty'] ?></td>
+
+                    </tr>
+                    <?php }
+                    }else{
+                        echo '<tr><td colspan="6">No Records Found</td></tr>';
+                    }
+                    ?>
+                </table>
+            </div>
+            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:40px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:"Times New Roman", Times, serif;">Property Photos</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="property-photos_holder">
+                <ul class="property-photos">
+                <?php
+                $photos                 =   $property->photos; 
+                $active                 =   '';
+                if(!empty($photos)){
+                    ?>
+                    <div class="pdf-bottom-part">
+                        <ul class="property-photos property-photos1">
+                            <?php
+                            if(isset($photos) && $photos != ''){
+                                foreach ($photos as $key => $photo) {
+                                    ?>
+                                    <li>
+                                    <?php
+                                        if(isset($photo) && $photo != ''){
+                                            $alias = $photo->getImageUrl(PhotoGallery::THUMBNAIL);
+                                            echo Html::img($alias);
+                                        }
+                                        //echo Html::img($alias);
+                                    ?>
+                                    </li>
+                                <?php
+                                }
+                            }
+                            ?>  
+                        </ul>
+                    </div>
+                    <?php
+                }
+                ?>
+                </ul>
+            </div>
+            <?php if(!empty($property->propertyFeatures)){?>
+<!--            <div class="page-break"></div>
+            <div class="header" style="margin-bottom:100px">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                    <tr>
+                        <td align="right" class="headertitlemain" width="60%" valign="bottom" style="padding-right:65px; padding-top:40px;"><div style="font-size:24px; text-align:right; color:#405e6f; font-weight:600; margin: 0; font-family:"Times New Roman", Times, serif;">Property Photos</div></td>
+                    </tr>
+                </table>            
+            </div>
+            <div class="pdf-bottom-part">
+                <div class="property-photos_holder">
+                    <ul class="property-photos">
+                            <?php
+                            foreach ($property->propertyFeatures as $feature) {
+                                $photos = $feature->photos;
+                                $itemListArr = $feature->featureItems;
+                                if (count($itemListArr) > 0) {
+                                    ?>
+                                    <li><span><?= $feature->featureMaster->name ?></span>
+                                        <?php
+                                        if (count($photos) == 0) {
+                                            echo Html::img(Yii::getAlias('@uploadsUrl/banner_image/no_image_avaliable.png'));
+                                        } else {
+                                            foreach ($photos as $key => $photo) {
+                                                if ($key == 0) {
+                                                    $active = 'active';
+                                                } else {
+                                                    $active = '';
+                                                }
+                                                if ($key == 0) {
+                                                    if (isset($photo) && $photo != '') {
+                                                        $alias = $photo->getImageUrl($photo::THUMBNAIL);
+                                                        echo Html::img($alias);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </li>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </ul>
+
+
+                </div>
+            </div>-->
+            <?php }?>
+        </div>
+        <!-- End Content Section ==================================================-->
+    </body>
+</html>

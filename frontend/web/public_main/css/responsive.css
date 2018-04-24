@@ -1,0 +1,368 @@
+/* Start Media Styles ---------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1199px) {
+	.slidercontent { top:40%; }
+	.register-right-inner { padding:25px; }
+	.about-sec ul { width:100%; }
+	.property-request-details-sec .property-request-box-inner p span { display:block; }
+	.view-property-request-sec .col-sm-4 { width:50%; }
+	.searchHotel .searchbox .col-sm-3 { width:100%; }
+	.searchHotel .searchbox .col-sm-2 { width:25%; }
+	.searchHotel .searchbox .col-sm-1 { width:100%; }
+	.hotel-details-top-right a.btn { float:left; margin:0 0 20px; }
+	.hotel-room-bottom-sec .col-sm-10 { border:none; }
+	.hotel-facilities-tab p { line-height:28px; }
+	.hotel-listing-form .form-group label { display:block; }
+	.agent-searchbox .col-sm-2 { padding:0; }
+	.agent-searchbox .col-sm-2 .btn-md { font-size:14px; }
+	.agent-advice-left { padding:60px 20px 40px; }
+	.agent-advice-right { padding:150px 20px 0; }
+	.find-agent-bottom-list .find-agent-bottom-con { top:60px; }
+	
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+	.topphone { margin-right:10px; padding-right:10px; }
+	.topsocial a { margin-right:2px; }
+	.pmenu.navbar-default .navbar-nav > li > a { padding:45px 6px; font-size:14px; }
+	.slidercontent { width:90%; }
+	.figuretext { font-size:64px; }
+	.listing-item-sec .item { margin:0 8px; }
+	.featured-agent-listing { width:100%; }
+	.counter-sec .counter-listing .counter-no { font-size:48px; }
+	.footer-newsletter-sec h2 { font-size:25px; }
+	.login-box { width:65%; }
+	.property-search-map-sec { width:50%; }
+	.property-search-right-outer { width:50%; }
+	.property-search-listing-bottom .property-search-listing-details { font-size:13px; }
+	.property-search-tabbar ul li a { margin-right:14px; }
+	.recently-sold-listing .recently-sold-con p { line-height:20px; }
+	.profile-name-review { bottom:60px; }
+	.listing-activity-list .for-sale { right:0; left:inherit; }
+	.review-listing .write-review-btn { font-size:16px; }
+	.review-listing .rating-star { font-size:16px; }
+	.review-listing .rating-star span { display:block; }
+	.review-listing .review-author { font-size:15px; }
+	.top-select-part label { padding:0 14px; }
+	.property-request-details-sec .property-request-box-inner p { font-size:15px; }
+	.home-sell-listing h3 { font-size:16px; }
+	.know-more-sec h2 { font-size:28px; }
+	.hoter-top-bar .col-sm-4 { padding-left:15px; }
+	.hotel-tab-listing-sec ul.nav-tabs li { width:24%; }
+	.hotel-room-bottom-sec ul li { width:33%; }
+	.hotel-facilities-tab ul li { width:33%; }
+	.agent-listing { padding:10px; }
+	.agent-listing .agent-listing-img { width:120px; height:120px; }
+	.agent-listing .agent-listing-left-details { margin-left:15px; }
+	.home-service-sec .agent-benefit-list a h3 { height:75px; }
+	.home-service-sec .agent-benefit-list a p { height:48px; }
+	.listing-item-sec .item .listing-con .listing-price { font-size:14px; margin-right:5px; }
+	.listing-item-sec .item .listing-con .listing-con-details { min-height:65px; }
+	.search-sell .col-md-6 { width:90%; left:5%; }
+		
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	.loginregister a { padding:0 6px; }
+	.topphone { margin-right:10px; padding-right:10px; }
+	.topsocial a { margin-right:2px; }
+	.toplanguage { margin:12px 0 0 0; }
+	.pmenu.navbar-default .navbar-nav > li > a { padding:10px 12px; font-size:15px; font-weight:normal; }
+	.slidercontent { width:100%; top:40%; }
+	.figuretext { font-size:48px; }
+	.news-advice-sec .col-sm-8 { width:100%; }
+	.featured-agent-listing { width:100%; }
+	.neighborhood-sec .col-sm-8 { width:92%; }
+	.counter-sec .counter-listing .counter-no { font-size:36px; }
+	.counter-sec .counter-listing .counter-name { font-size:15px; }
+	.footer-newsletter-sec h2 { font-size:19px; }
+	.footer-newsletter-sec button[type="submit"] { font-size:16px; }
+	.footer-top-sec .col-sm-3 { width:50%; margin-bottom:30px; }
+	.login-box { width:80%; }
+	.login-box .login-box-inner { padding:40px 50px; }
+	.register-sec .register-left-sec form { width:100%; }
+	.register-right-inner ul li { margin:5px 0; }
+	.register-right-inner ul li p { margin-bottom:40px; }
+	.property-menu-list .dropdown .dropdown-toggle { padding:12px 6px; font-size:14px; }
+	.property-listing-left { width:100%; }
+	.property-listing-right { width:100%; }
+	.property-search-map-sec { width:40%; }
+	.property-search-right-outer { width:60%; }
+	.property-search-tabbar ul li a { margin-right:14px; }
+	.property-search-listing-bottom { position:inherit; }
+	.property-search-listing-bottom h3 { width:100%; margin:0 0 10px; }
+	.property-search-listing-bottom .property-search-listing-details { float:left; }
+	.property-details-form { margin:0 0 20px; }
+	.save-property-box a { width:47px; }
+	.similar-property-content { position:inherit; }
+	.similar-property-content .red-btn { float:none; margin:5px 0; }
+	.similar-property-content-txt { font-size:13px; line-height:18px; }
+	.location-left-tab li a { font-size:13px; }
+	.recently-sold-listing .recently-sold-con p { line-height:18px; }
+	.review-listing .col-sm-2 { padding-left:0; }
+	.review-listing .write-review-btn { font-size:14px; }
+	.review-listing .rating-star { font-size:14px; }
+	.review-listing .rating-star span { display:block; }
+	.review-listing .review-author { font-size:13px; }
+	.listing-activity-list-sec .col-sm-3 { width:50%; }
+	.agent-profile-content-sec h2 { font-size:32px; }
+	.profile-img-sec { width:15%; }
+	.profile-name-review { bottom:100px; left:15px; }
+	.profile-name-review h2 { font-size:24px; margin-bottom:5px; }
+	.profile-name-review h3 { font-size:18px; margin-bottom:5px; }
+	.profile-name-review p { font-size:18px; }
+	.profile-cover-bottom-bar ul { margin-left:150px; }
+	.profile-link-sec ul li a { font-size:13px; padding:9px; }
+	.profile-link-sec a.red-btn { font-size:14px; }
+	.profile-img-sec a { font-size:28px; }
+	.news-advices-top-sec h2, .news-advices-bottom-sec h2 { font-size:27px; }
+	.real-advices-listing-img .real-advices-listing-video i { font-size:40px; top:13%; }
+	.news-advices-top-sec .news-advice-img { height:auto; }
+	.contact-top-part .contact-top-con h2 { font-size:32px; }
+	.contact-top-part .contact-top-con p { font-size:16px; }
+	.contact-bottom-part h3 { left:7%; }
+	.about-top-part .about-top-con h2 { font-size:48px; }
+	.top-select-part label { padding:0 7px; font-size:12px; }
+	.property-request-details-sec .property-request-box-inner p { font-size:14px; }
+	.home-sell-listing-sec .col-sm-3 { width:50%; margin-bottom:30px; }
+	.know-more-sec { display:block; }
+	.know-more-sec a { margin:30px 0 20px; display:inline-block; }
+	.book-hotel-service-sec p { font-size:20px; line-height:32px; }
+	.property-buy-home-sec h2 { font-size:32px; }
+	.hotel-tab-listing-sec ul.nav-tabs li { width:24%; }
+	.hotel-tab-listing-sec ul.nav-tabs li a { font-size:13px; }
+	.hotel-room-listing .col-sm-4 { width:100%; }
+	.hotel-room-listing .col-sm-8 { width:100%; }
+	.hotel-room-listing .col-sm-4 img { width:100%; }
+	.hotel-room-bottom-sec .col-sm-2 { width:100%; }
+	.hotel-room-bottom-sec .col-sm-10 { width:100%; padding:0 15px; }
+	.hotel-room-bottom-sec ul li { width:50%; }
+	.hotel-facilities-tab ul li { width:50%; }
+	.review-listing-right h4 { display:block; margin-bottom:20px; }
+	.hoter-top-bar .col-sm-4 { width:100%; border-bottom:1px #ccc solid; padding-left:15px; }
+	.hotel-facilities-tab p span { width:auto; }
+	.agent-advice-right h2 { font-size:58px; line-height:58px; }
+	.agent-advice-right h3 { font-size:45px; line-height:45px; }
+	.agent-advice-right h4 { padding:10px 90px; }
+	.agent-advice-right h4:after { width:60px; }
+	.agent-advice-right h4:before { width:60px; }
+	.agent-advice-right h5 { font-size:40px; line-height:40px; }
+	.find-agent-bottom-list .find-agent-bottom-con { top:30px; }
+	.find-agent-bottom-list .find-agent-bottom-con h3 { font-size:20px; }
+	.hotel-listing-top h2 { width:100%; font-size:30px; }
+	.hotel-listing-select { float:left !important; margin-top:20px; }
+	.agent-listing .agent-listing-right { width:100%; border:none; border-top:1px #ddd solid; margin:15px 0 0 0; padding:15px 0 0 0; }
+	.agent-listing .agent-listing-right .agent-listing-right-top { margin-bottom:15px; }
+	
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+	.pleft { padding-left:15px; }
+	.pright { padding-right:15px; }
+	.loginregister { text-align:center; }
+	.loginregister a { padding:0 10px; }
+	.headertop .col-sm-9.text-right { text-align:center; }
+	.topphone { margin:4px 0 8px; padding:0; border:none; }
+	.topsocial { margin-bottom:10px; }
+	.navbar-default .col-sm-4 .navbar-brand { width:100%; text-align:center; }
+	.navbar-default .col-sm-4 .navbar-brand img { margin:auto; }
+	.top-nav { width:100%; padding:0; background:#b21117; }
+	.navbar-default .top-nav .navbar-toggle { border-color:#fff; }
+	.navbar-default .top-nav .navbar-toggle .icon-bar { background-color:#fff; }
+	.navbar-default .top-nav .navbar-toggle:hover, .navbar-default .top-nav .navbar-toggle:focus { background-color:#999; }
+	.top-nav .navbar-collapse { width:100%; background:#f5f5f5; }
+	.top-nav .navbar-nav { margin:0 -14px; }
+	.pmenu .top-nav .mega-dropdown { width:100%; position:relative !important; }
+	.pmenu.navbar-default .top-nav .navbar-nav > li > a { padding:18px 15px; border-bottom:1px solid #ddd; }
+	.pmenu.navbar-default .navbar-nav > li:hover > a, .pmenu.navbar-default .navbar-nav > li.active > a { border-color:#ff3030; }
+	.pmenu .top-nav .mega-dropdown .dropdown-toggle.visible-xs { width:57px; height:57px; display:inline-block; background:#999; color:#fff; position:absolute; top:0; right:0; text-align:center; }
+	.pmenu .top-nav .mega-dropdown.open .dropdown-toggle.visible-xs .fa-plus:before { content:'\f068'; }
+	.pmenu .top-nav .navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu .dropdown-header { padding:5px 0; }
+	.pmenu .top-nav .navbar-nav > li > .dropdown-menu { padding:15px 0; border-bottom:1px #ddd solid; }
+	
+	.slidercontent { display:none; }
+	.searchtopbar ul li a { padding:15px 5px; }
+	.searchbox { padding:15px 15px 0; }
+	.searchbox .button_holder { position:inherit; top:0; right:0; width:100%; margin-top:5px; }
+	.searchLink { text-align:center; }
+	.home-service-sec h2 { font-size:30px; line-height:42px; }
+	.home-service-sec h2::after { width:20%; left:40%; }
+	.home-service-sec .home-service-list-sec a { margin-bottom:40px; display:inline-block; }
+	.home-service-sec .home-service-list-sec .col-sm-4:last-child a { margin-bottom:0px; }
+	.home-listing-sec h2::after { width:20%; left:40%; }
+	.listing-counter-sec .counter-listing { margin-bottom:30px; }
+	.listing-counter-sec .counter-listing:last-child { margin-bottom:0px; }
+	.news-advice-sec p { font-size:36px; line-height:46px; }
+	.featured-agent-sec h2 { font-size:32px; }
+	.featured-agent-sec h2 span { font-size:16px; }
+	.featured-agent-sec h2::after { width:10%; left:45%; }
+	.featured-agent-list { display:inline-block; margin-bottom:30px; }
+	.col-sm-3:last-child .featured-agent-list { margin-bottom:0px; }
+	.testimonial-inner { padding:0 15px 20px; }
+	.neighborhood-sec { padding:70px 0; }
+	.neighborhood-sec h2 { font-size:36px; }
+	.neighborhood-sec .col-sm-8 form { padding:0 15px; }
+	.neighborhood-sec input[type="text"] { border-radius:0; }
+	.neighborhood-sec .col-sm-8 form .col-sm-3.pleft { padding:0; }
+	.neighborhood-sec button[type="submit"] { border-radius:0; }
+	.counter-sec .counter-listing { margin-bottom:30xp; }
+	.footer-newsletter-sec .col-sm-7 form { padding:0; }
+	.footer-newsletter-sec input[type="text"] { border-radius:0; }
+	.footer-newsletter-sec button[type="submit"] { border-radius:0; }
+	footer .footer-about { text-align:center; }
+	.footer-top-sec .col-sm-8 .col-sm-3 { margin-top:30px; float:left; width:50%; }
+	.footer-nav ul li a { padding:4px 10px; }
+	.footer-bottom-btn-sec ul li { padding:3px 5px; }
+	.scrollToTop { right:10px; }
+	.login-box .login-box-inner { padding:20px 15px; }
+	.login-bottom-sec { padding-bottom:20px; }
+	.login-bottom-sec a.facebook-login { clear:both; margin:0 0 15px; }
+	.register-right-inner { padding:15px; margin-top:20px; }
+	.register-sec .register-left-sec form { width:100%; }
+	.login-register-popup .modal-dialog { width:92%; }
+	.login-box-inner .form-group.text-center { clear:both; }
+	.modal .modal-content { margin:15px auto; }
+	
+	.property-search-bar { width:100%; }
+	.property-menu-bar .save-search-btn { float:left; }
+	.property-menu-list { margin:0; width:100%; }
+	.property-menu-list .dropdown { width:100%; }
+	.property-menu-list .dropdown .dropdown-toggle { line-height:18px; padding:10px; }
+	.property-menu-list .dropdown-menu { width:100%; }
+	.property-menu-list .any-price-menu .dropdown-menu { width:100%; }
+	.property-menu-list .property-type-menu .dropdown-menu { width:100%; }
+	.property-menu-list .any-price-menu .dropdown-menu .col-sm-5 { width:45%; float:left; }
+	.property-menu-list .any-price-menu .dropdown-menu .col-sm-1 { width:10%; float:left; }
+	.propery-listing-title-bar h3 { width:100%; display:inline-block; margin-top:10px; }
+	.property-listing-left-bottom-left { width:100%; }
+	.property-listing-left-bottom-right { width:100%; border:none; margin:10px 0 0; float:left; text-align:left; padding:0; }
+	.property-listing-left-bottom-right p { float:left; }
+	.property-listing-left-bottom-right span { float:right; }
+	.property-listing-right { padding:20px 10px; }
+	.property-listing-right-sec { margin-top:20px; }
+	.property-listing-right-sec .rightside-ad { text-align:center; }
+	.property-search-map { height:400px !important; }
+	.property-search-tabbar ul li a { font-size:14px; margin-right:6px; }
+	.property-search-listing-bottom { position:inherit; }
+	.property-search-listing-bottom h3 { width:100%; margin:0 0 10px; }
+	.property-search-listing-bottom .property-search-listing-details { float:left; }
+	.property-details-slider-sec .slide .carousel-control span { font-size:24px; }
+	.property-details-slider-bottom ul li { width:100%; padding:0 15px; border:none; }
+	.location-tabbar { position:inherit; }
+	.location-tabbar li a { padding:8px 25px; }
+	.calculate-form .form-group .col-sm-6:first-child { margin-bottom:15px; }
+	.property-details-form { margin:0 0 20px; }
+	.property-details-bottom-left { border:none; }
+	.porperty-details-progress-bar { margin:0; }
+	.average-price-listing .average-price-table-listing { margin-bottom:20px; }
+	.property-history-listing-border { width:90%; margin:10px 5%; }
+	.profile-cover-bottom-bar ul { margin-left:15px; }
+	.profile-img-sec { position:relative; display:inline-block; }
+	.profile-name-review { position:inherit; left:0; bottom:0; width:100%; display:inline-block; margin:20px 0; padding:0 15px; }
+	.profile-name-review h2, .profile-name-review h3, .profile-name-review p { color:#333; }
+	.profile-link-sec { position:inherit; bottom:0; right:0; padding:0 15px; }
+	.profile-link-sec a.red-btn { float:left; margin-bottom:6px; }
+	.profile-link-sec ul { width:100%; margin:0; }
+	.profile-link-sec ul li { display:block; }
+	.profile-link-sec ul li a { border:none; display:block; }
+	.agent-profile-content-sec h2 { font-size:32px; }
+	.agent-profile-Txtcontent table tr td { padding:10px; }
+	.review-listing p { margin-bottom:20px; }
+	.news-advices-top-sec .news-advice-img { height:auto; }
+	.latest-news-listing-con { margin-top:10px; }
+	.news-advices-top-sec h2 { font-size:24px; }
+	.news-tab-listing-con { margin-bottom:10px; width:100%; display:inline-block; }
+	.contact-top-con { display:none; }
+	.contact-bottom-part h3 { display:none; }
+	.contact-bottom-part a img { padding:8% 0 0 38%; }
+	.about-top-con { display:none; }
+	.about-sec ul { width:100%; }
+	.about-sec ul li { width:100%; margin:10px 0; }
+	.news-similar-topic .latest-news-listing { margin:10px 0 20px; }
+	.top-select-part .top-select-highlight { width:100%; }
+	.top-select-part { height:auto; text-align:left; line-height:32px; }
+	.top-select-part label { width:100%; }
+	.top-select-part .top-select-highlight { line-height:50px; margin-bottom:5px; }
+	.property-request-details-sec .property-request-box-inner p { font-size:15px; margin-bottom:15px; }
+	.sell-home-sec { padding-bottom:0; }
+	.home-sell-listing { margin-bottom:50px; }
+	.know-more-sec { display:block; }
+	.know-more-sec a { margin:30px 0 20px; display:inline-block; }
+	.book-hotel-service-sec p { font-size:20px; line-height:32px; }
+	.property-buy-home-sec h2 { font-size:28px; }
+	.hoter-top-bar .col-sm-4 { padding:6px 15px; }
+	.hoter-top-bar .hotel-top-barTxt { text-align:left; }
+	.hoter-top-bar .hotel-top-barTxt span { display:inline-block; margin-left:6px; }
+	.hotel-details-top-left .slider-thumb li { width:17%; }
+	.hotel-details-top-right a.btn { float:left; margin:0 0 20px 0; }
+	.hotel-tab-listing-sec ul.nav-tabs li { width:100%; margin-bottom:10px; }
+	.hotel-overview-tab ul { padding:0; }
+	.hotel-room-bottom-sec .col-sm-10 { padding:0 15px; border:none; }
+	.hotel-room-bottom-sec ul li { width:100%; }
+	.hotel-facilities-tab ul li { width:100%; }
+	.hotel-facilities-tab p span { width:auto; }
+	.review-listing-left { border-bottom:1px #ddd solid; border-right:none; margin-bottom:20px; }
+	.review-listing-right { padding:0 15px; }
+	.review-listing-right h4 { display:block; margin-bottom:20px; }
+	.hotel-listing-form input { width:100% !important; }
+	.property-listing-bottom-sec .pagination-sec { float:left; }
+	.hotel-listing-select { width:100%; display:inline-block; }
+	.hotel-listing-con .col-sm-6 { text-align:left; }
+	.hotel-listing-select .dropdown { margin:0 0 10px; }
+	.search-top-bar label { margin:0 1px 0 0; }
+	.agent-searchbox .col-sm-5 { margin-bottom:10px; }
+	.agent-searchbox .col-sm-2 .mtop30 { margin-top:10px; }
+	.home-service-sec .home-service-list-sec a { margin-bottom:20px; }
+	.agent-advice-left { padding:30px 15px; }
+	.agent-advice-right { padding:30px 15px; }
+	.agent-advice-right h2 { font-size:58px; line-height:58px; }
+	.agent-advice-right h3 { font-size:45px; line-height:45px; }
+	.agent-advice-right h4 { padding:10px 65px; }
+	.agent-advice-right h4:after { width:30px; }
+	.agent-advice-right h4:before { width:30px; }
+	.agent-advice-right h5 { font-size:40px; line-height:40px; }
+	.find-agent-bottom-list { margin-bottom:30px; }
+	.find-agent-bottom-list .find-agent-bottom-con { top:60px; }
+	.find-agent-bottom-list .find-agent-bottom-con h3 { font-size:24px; }
+	.hotel-listing-form { width:100%; border:none; padding:0; }
+	.find-agent-top-part .find-agent-top-list { float:left; margin-top:8px; }
+	.find-agent-top-part .find-agent-top-list a { margin:0 15px 0 0; }
+	.hotel-listing-top h2 { width:100%; font-size:30px; }
+	.hotel-listing-select { float:left !important; margin-top:20px; }
+	.agent-listing .agent-listing-right { width:100%; border:none; border-top:1px #ddd solid; margin:15px 0 0 0; padding:15px 0 0 0; }
+	.agent-listing .agent-listing-right .agent-listing-right-top { margin-bottom:15px; }
+	.agent-listing { padding:10px; }
+	
+	
+	
+	
+	
+}
+
+@media (min-width: 320px) and (max-width: 360px) {
+	.footer-newsletter-sec h2 { font-size:20px; }
+	.footer-top-sec .col-sm-8 .col-sm-3 { float:none; width:100%; }
+	.login-box form .form-group a { float:left; margin-top:5px; }
+	.register-right-inner h2 { font-size:22px; }
+	.register-right-inner ul li { margin:5px 0; }
+	.register-right-inner ul li p { margin-bottom:40px; }
+	.property-details-bottom-left-img { width:80px; margin-right:10px; }
+	.property-details-bottom-left p { line-height:20px; }
+	.view-property-request-box ul li { font-size:14px; }
+	.view-property-request-box ul li > div { width:auto; }
+	.view-property-request-box ul li img { width:26px; height:26px; margin-right:6px; }
+	.view-property-request-box ul li span { width:77px; }
+	.search-top-bar label { width:100%; margin:0 0 3px; }
+	
+	.agent-listing .agent-listing-left-details { margin:10px 0 0 0; }
+	.agent-listing .agent-listing-right .agent-listing-sale-sold,
+	.agent-listing .agent-listing-right .agent-listing-right-bottom .agent-listing-right-left { width:100%; }
+	.agent-listing .agent-listing-right .agent-listing-range { width:100%; text-align:left; margin-top:8px; }
+}
+
+
+
+
+
+
+
+
